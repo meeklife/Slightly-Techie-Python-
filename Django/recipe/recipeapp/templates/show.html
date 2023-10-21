@@ -1,0 +1,22 @@
+{% extends 'base.html'%}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css" />
+<title>{% block title %}{{recipes.name}}Recipe{% endblock %}</title>
+
+{% block content %}
+
+{% for recipe in recipes%}
+    <div class="card" style="width: 18rem;">
+        <img src="{%static 'img/food-icon.png'%}" class="card-img-top" alt="...">
+        <div class="card-body">
+            <h5 class="card-title">{{ recipe.name }}</h5>
+            <p class="card-text">{{ recipe.calories}} calories</p>
+            <p class="card-text">{{ recipe.duration}} to cook</p>
+            <a href="{% url 'edit_recipe' recipe.id %}" class="btn btn-primary">Edit</a> 
+            <a href="{% url 'delete_recipe' recipe.id %}" class="btn btn-primary">Delete</a>
+        </div>
+    </div>
+{% endfor %}
+
+
+{% endblock %}

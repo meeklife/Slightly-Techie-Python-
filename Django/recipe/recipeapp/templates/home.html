@@ -1,0 +1,40 @@
+{% extends 'base.html'%}
+{% load static %}
+<link rel="stylesheet" href="{% static 'css/main.css' %}" type="text/css" />
+<title>{% block title %}Recipes{% endblock %}</title>
+
+
+{% block content %}
+<div class="">
+    <div>
+        <a><h1 class="text-primary text-center">All Recipes</h1>
+    </div>
+
+    <table class="table">
+        <tr>
+            <th>ID</th>
+            <th>Recipe</th>
+            <th>Calories</th>
+            <th>Duration</th>
+        </tr>
+
+        {% for recipe in recipes%}
+            <div >
+               
+                <tr>
+                    <td>{{ recipe.id }}</td>
+                    <td><a href="{% url 'view_recipe' recipe.id %}" class="textDeco">{{ recipe.name }}</a></td>
+                    <td>{{ recipe.calories }}</td>
+                    <td>{{ recipe.duration }}</td>
+                </tr>
+              
+            </div>
+            {% endfor %}
+    </table>
+</div>
+{% endblock%}
+
+<!-- <ul class="list-group list-group-flush">
+                    <a href="" class="textDeco"><li class="list-group-item">{{recipe.name}}, 
+                        {{recipe.calories}} calories and {{recipe.duration}} cooking time</li></a>
+                </ul> -->

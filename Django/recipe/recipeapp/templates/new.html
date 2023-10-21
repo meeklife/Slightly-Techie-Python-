@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+
+
+<title>{% block title %}New Recipe{% endblock %}</title>
+
+{% block content %}
+<div>
+    <h2 class="text-primary text-center">Add New Recipe</h2>
+</div>
+
+<div>
+    <form action="{% url 'create_new_recipes' %}" method="POST">   
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="formGroupExampleInput" class="form-label">Enter Recipe Name</label>
+            <input type="text" class="form-control" id="formGroupExampleInput" name='name'>
+        </div>
+        <div class="mb-3">
+            <label for="formGroupExampleInput2" class="form-label">Enter Calories</label>
+            <input type="text" class="form-control" id="formGroupExampleInput2" name='calories'>
+        </div>
+        <div class="mb-3">
+            <label for="formGroupExampleInput3" class="form-label">Enter the Duration</label>
+            <input type="text" class="form-control" id="formGroupExampleInput3" name='duration'>
+        </div>
+        <button class="btn btn-primary">submit</button>
+    </form>
+</div>
+{% endblock %}
